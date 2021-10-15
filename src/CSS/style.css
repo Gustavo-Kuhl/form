@@ -1,0 +1,215 @@
+/* Global ========================================================= */
+
+:root {
+    --blue: #08D9D6;
+    --dark: #131418;
+    --pink: #FF2E63;
+    --gray: #EAEAEA;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--dark);
+    color: var(--gray);
+    overflow: hidden;
+}
+
+h1 {
+    font-size: 4rem;
+    margin-bottom: 2rem;
+    position: relative;
+    transition: 1s;
+    padding: 1rem;
+}
+
+h1:hover {
+    color: var(--pink);
+}
+
+h1::before {
+    content: '';
+    transition: .3s;
+    z-index: -2;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-color: var(--blue);
+    transform: translate(0);
+    border-radius: 5px;
+}
+
+h1:hover::before {
+    width: 100%;
+    transform: translate(1);
+}
+
+/* Main ====================================================== */
+
+.logo {
+    width: 90%;
+    height: 90%;
+    padding: 1rem;
+    margin: 0 auto;
+}
+
+#sign-in {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.sign-in-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Form ==================================================== */
+
+form {
+    min-width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+.inputs {
+    position: relative;
+}
+
+.inputs label {
+    position: absolute;
+    left: 30px;
+    top: 5px;
+    background-color: var(--dark);
+    border-radius: 5px;
+    padding: 0 .5rem;
+    font-size: .8rem;
+}
+
+.inputs input {
+    border: 2px solid var(--pink);
+    color: var(--gray);
+    outline: unset;
+    padding: .5rem;
+    width: 100%;
+    margin: 1rem;
+    background-color: transparent;
+}
+
+.check {
+    margin: 1rem;
+}
+
+form button {
+    margin: 1rem;
+    padding: .5rem;
+    width: 100%;
+    border: unset;
+    border-radius: 5px;
+    background-color: var(--blue);
+    color: var(--dark);
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    word-spacing: .4rem;
+    transition: .5s;
+    position: relative;
+}
+
+form button::before {
+    position: absolute;
+    content: '';
+    transition: .5s;
+    background-color: var(--pink);
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: -1;
+    transform: scale(0);
+}
+
+form button:hover::before {
+    transform: scale(1);
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+}
+
+form button:hover {
+    transform: scale(1);
+    color: var(--gray);
+    transition: .3s;
+}
+
+.login {
+    margin: 1rem;
+}
+
+a {
+    text-decoration: none;
+    color: var(--pink);
+    padding: .5rem;
+    position: relative;
+    transition: 1s;
+}
+
+a:hover {
+    transform: translate(30px);
+    color: var(--dark);
+    transform: rotate(90deg);
+    border-radius: 10px;
+}
+
+a::before {
+    content: '';
+    width: 0;
+    height: 100%;
+    left: 0;
+    bottom: 0;
+    position: absolute;
+    background-color: var(--blue);
+    border-radius: 10px;
+    transition: .3s;
+    z-index: -1;
+}
+
+a:hover::before {
+    width: 100%;
+    height: 100%;
+}
+
+/* Animation ================================= */
+.animation {
+    background-color: var(--blue);
+    height: 8px;
+    border-radius: 10px;
+    width: 300px;
+    margin: 1rem 0;
+    position: absolute;
+    animation: move;
+    animation-iteration-count: infinite;
+    animation-fill-mode: forwards;
+    animation-duration: 6s;
+}
+
+@keyframes move {
+    0% {transform: translateX(-50vw);}
+    20% {transform: translateX(0vw);}
+    40% {transform: translateX(110vw);}
+    60% {transform: translateX(110vw) translateY(90vh);}
+    80% {transform: translateX(50vw) translateY(90vh);}
+    100% {transform: translateX(-50vw) translateY(90vh)}
+}
