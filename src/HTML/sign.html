@@ -1,60 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Form</title>
     <link rel="stylesheet" href="../CSS/style.css">
+    <link rel="shortcut icon" href="../assets/login.png" type="image/x-icon">
 </head>
-
 <body>
 
-    <div class="animation"></div>
+    <main>
 
-    <main id="sign-in">
+        <h1>sign in.</h1>
 
-        <div class="logo">
-            <img src="../assets/sign-in.svg" alt="">
-        </div>
+        <form action="">
 
-        <div class="sign-in-card">
-            <h1>Sign in</h1>
-            <form action="">
+            <button class="google">
+                <img src="../assets/google-logo.svg" alt="">
+                Connect with Google
+            </button>
+            <button class="facebook">
+                <img src="../assets/facebook.svg" alt="">
+                Connect with Facebook
+            </button>
 
-                <div class="inputs">
-                    <label for="">Name</label>
-                    <input type="text" name="" id="" placeholder="Type your name">
-                </div>
+            <span>or</span>
 
-                <div class="inputs">
-                    <label for="">E-mail</label>
-                    <input type="email" name="" id="" placeholder="Type your e-mail">
-                </div>
+            <div class="inputs">
+                <label for="">Name</label>
+                <input id="name" type="text" required>
+            </div>
 
-                <div class="inputs">
-                    <label for="">Password</label>
-                    <input type="password" name="" id="" placeholder="Type your password">
-                </div>
+            <div class="inputs">
+                <label for="">Password</label>
+                <input id="password" type="password" required>
+            </div>
+            
+            <div class="inputs">
+                <label for="">Repeat Password</label>
+                <input id="password" type="password" required>
+            </div>
+            
+            <div class="check">
+                <input type="checkbox">
+                <span>Accept terms.</span>
+            </div>
 
-                <div class="check">
-                    <input type="checkbox" name="" id="">
-                    <label for="">I agree to the terms & conditions</label>
-                </div>
 
-                <button>Create my account</button>
+            <button id="btn-sign" type="submit">Sign in</button>
 
-                <div class="login">
-                    <span>Already have an account ?</span>
-                    <a href="">Login</a>
-                </div>
+            <div class="create-account">
+                <span>Don't have an account ?</span>
+                <a href="#">Create Account</a>
+            </div>
 
-            </form>
-        </div>
+            <a id="fg-password" href="">Forgot password ?</a>
+
+        </form>
+
     </main>
-
+    
     <script src="../JS/main.js"></script>
-</body>
 
+</body>
 </html>
