@@ -97,7 +97,6 @@ const user = {
     }
 }
 
-user.getUser()
 
 function app() { 
 
@@ -106,6 +105,8 @@ function app() {
     viewEvents.nameLabelColor()
     viewEvents.passwordLabelColor()
 
+    // getting and setting user at localstorage
+    user.getUser()
 }
 
 app()
