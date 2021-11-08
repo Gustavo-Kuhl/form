@@ -2,7 +2,6 @@ const label = document.querySelectorAll('label')
 const input = document.querySelectorAll('input')
 const divInputs = document.querySelectorAll('.inputs')
 
-
 const viewEvents = {
     moveLabel() {
 
@@ -51,7 +50,7 @@ const viewEvents = {
 
         password.addEventListener('keyup', () => {
 
-            if (password.value.length <= 6) {
+            if (password.value.length < 6) {
 
                 password.style.border = '2px solid crimson'
                 passwordLabel.style.color = 'crimson'
@@ -72,7 +71,7 @@ const viewEvents = {
 
         rptPassword.addEventListener('keyup', () => {
 
-            if (rptPassword.value.length <= 6) {
+            if (rptPassword.value.length < 6) {
 
                 rptPassword.style.border = '2px solid crimson'
                 rptPasswordLabel.style.color = 'crimson'
@@ -84,7 +83,6 @@ const viewEvents = {
 
             }
         })
-
     }
 }
 
@@ -92,7 +90,7 @@ const viewEvents = {
 // Local Storage Functions =============================================
 const storage = {
     get() {
-        console.log(JSON.parse(localStorage.getItem('db_user')))
+        return JSON.parse(localStorage.getItem('db_user')) || []
     },
 
     set(db_user) {
@@ -100,40 +98,41 @@ const storage = {
     }
 }
 
-const savedUsers = []
+console.log(storage.get())
 
 const user = {
-    saveUser() {
+    savedUsers: storage.get(),
 
+    saveUser() {
+        
         const btnSign = document.querySelector('#btn-sign')
         btnSign.addEventListener('click', this.verifyPassword)
-
+        
     },
-
+    
     verifyPassword() {
-
-        const btnSign = document.querySelector('#btn-sign')
+        
         const inputName = document.querySelector('#name').value
         const inputPassword = document.querySelector('#password').value
         const inputRepeatPassword = document.querySelector('#repeat-password').value
 
         if ( inputPassword == inputRepeatPassword ) {
 
-            savedUsers.push({name: inputName, password: inputPassword, rptPassword: inputRepeatPassword})
-            btnSign.type = 'submit'
-            storage.set(savedUsers)
-            console.log(savedUsers)
+            this.savedUsers.push({name: inputName, password: inputPassword, rptPassword: inputRepeatPassword})
+            console.log(this.savedUsers)
+            storage.set(this.savedUsers)
 
         } else {
 
             window.alert('As senhas devem ser iguais!')
-            btnSign.type = 'button'
 
         }
 
     }
 }
 
+
+console.log(user.savedUsers)
 
 function app() { 
 
