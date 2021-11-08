@@ -2,6 +2,7 @@ const label = document.querySelectorAll('label')
 const input = document.querySelectorAll('input')
 const divInputs = document.querySelectorAll('.inputs')
 
+
 const viewEvents = {
     moveLabel() {
 
@@ -62,6 +63,27 @@ const viewEvents = {
 
             }
         })
+    },
+
+    repeatPassword() {
+
+        const rptPassword = input[2]
+        const rptPasswordLabel = label[2]
+
+        rptPassword.addEventListener('keyup', () => {
+
+            if (rptPassword.value.length <= 6) {
+
+                rptPassword.style.border = '2px solid crimson'
+                rptPasswordLabel.style.color = 'crimson'
+
+            } else {
+
+                rptPassword.style.border = '2px solid #2FDD92'
+                rptPasswordLabel.style.color = '#fff'
+
+            }
+        })
 
     }
 }
@@ -81,19 +103,34 @@ const storage = {
 const savedUsers = []
 
 const user = {
-    getUser() {
+    saveUser() {
 
         const btnSign = document.querySelector('#btn-sign')
+        btnSign.addEventListener('click', this.verifyPassword)
 
-        btnSign.addEventListener('click', () => {
-            
-            const inputName = document.querySelector('#name').value
-            const inputPassword = document.querySelector('#password').value
-            
-            savedUsers.push({name: inputName, password: inputPassword})
+    },
+
+    verifyPassword() {
+
+        const btnSign = document.querySelector('#btn-sign')
+        const inputName = document.querySelector('#name').value
+        const inputPassword = document.querySelector('#password').value
+        const inputRepeatPassword = document.querySelector('#repeat-password').value
+
+        if ( inputPassword == inputRepeatPassword ) {
+
+            savedUsers.push({name: inputName, password: inputPassword, rptPassword: inputRepeatPassword})
+            btnSign.type = 'submit'
             storage.set(savedUsers)
-            
-        })
+            console.log(savedUsers)
+
+        } else {
+
+            window.alert('As senhas devem ser iguais!')
+            btnSign.type = 'button'
+
+        }
+
     }
 }
 
@@ -104,9 +141,12 @@ function app() {
     viewEvents.moveLabel()
     viewEvents.nameLabelColor()
     viewEvents.passwordLabelColor()
+    viewEvents.repeatPassword()
+
 
     // getting and setting user at localstorage
-    user.getUser()
+    user.saveUser()
+    storage.get()
 }
 
 app()
